@@ -19,6 +19,15 @@ class TestAddGroup(unittest.TestCase):
         self.return_to_groups_page(driver)
         self.logout(driver)
 
+    def test_add_empty_group(self):
+        driver = self.wd
+        self.open_home_page(driver)
+        self.login(driver, username="admin", password="secret")
+        self.open_groups_page(driver)
+        self.create_group(driver, name="", header="", footer="")
+        self.return_to_groups_page(driver)
+        self.logout(driver)
+
     def logout(self, driver):
         driver.find_element_by_link_text("Logout").click()
 
