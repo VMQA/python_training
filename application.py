@@ -52,3 +52,28 @@ class Application:
     def destroy(self):
         self.wd.quit()
 
+    def create_contact(self, contact):
+        driver = self.wd
+        # init contact creation
+        driver.find_element_by_link_text("add new").click()
+        # input First name
+        driver.find_element_by_name("firstname").click()
+        driver.find_element_by_name("firstname").clear()
+        driver.find_element_by_name("firstname").send_keys(contact.first_name)
+        # input Last name
+        driver.find_element_by_name("lastname").click()
+        driver.find_element_by_name("lastname").clear()
+        driver.find_element_by_name("lastname").send_keys(contact.last_name)
+        # input address
+        driver.find_element_by_name("address").click()
+        driver.find_element_by_name("address").clear()
+        driver.find_element_by_name("address").send_keys(contact.address)
+        # input email
+        driver.find_element_by_name("email").click()
+        driver.find_element_by_name("email").clear()
+        driver.find_element_by_name("email").send_keys(contact.email)
+        driver.find_element_by_xpath("(//input[@name='submit'])[2]").click()
+        #return to home page
+        driver.find_element_by_link_text("home page").click()
+
+
